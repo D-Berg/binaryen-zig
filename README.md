@@ -2,7 +2,7 @@
 
 [Binaryen](https://github.com/WebAssembly/binaryen) using the zig build system.
 
-# Usage
+# Usage as a libray
 
 ```sh
 zig fetch --save=binaryen git+https://github.com/D-Berg/binaryen-zig.git
@@ -56,5 +56,10 @@ exe_mod.linkLibrary(binaryen_dep.artifact("binaryen"));
 ```
 
 
+# Tools
+To build the tools clone the repo and run
 
+```sh
+zig build tools
+```
 
