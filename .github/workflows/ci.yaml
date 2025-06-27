@@ -18,5 +18,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install Zig
         uses: mlugg/setup-zig@v1
+        with:
+          version: 0.14.1
+          use-cache: false # TODO: remove
       - name: Build
         run: zig build
