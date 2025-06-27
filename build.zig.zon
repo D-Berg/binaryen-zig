@@ -1,0 +1,28 @@
+.{
+    .name = .binaryen_zig,
+
+    .version = "0.1.0",
+
+    .fingerprint = 0x544cbfd6ba615e4f,
+
+    // Tracks the earliest Zig version that the package considers to be a
+    // supported use case.
+    .minimum_zig_version = "0.14.1",
+
+    // This field is optional.
+    // Each dependency must either provide a `url` and `hash`, or a `path`.
+    // `zig build --fetch` can be used to fetch all dependencies of a package, recursively.
+    // Once all dependencies are fetched, `zig build` no longer requires
+    // internet connectivity.
+    .dependencies = .{
+        .binaryen = .{ // upstream
+            .url = "git+https://github.com/WebAssembly/binaryen.git#dcf18a7abd50154a65bdea2dbcdee8cfbf4ffcac",
+            .hash = "N-V-__8AAOqxNgL5ULeemPW_KC02A1Ik6HvLFZSW1CsSn_rn",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+    },
+}
