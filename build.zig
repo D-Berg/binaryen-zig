@@ -59,6 +59,18 @@ pub fn build(b: *std.Build) !void {
 
     lib_binaryen.linkSystemLibrary("pthread");
 
+    const translate_c = b.addTranslateC(.{
+        .root_source_file = binaryen_dep.path("src/binaryen-c.h"),
+        .optimize = optimize,
+        .target = target,
+        .link_libc = true,
+    });
+
+    const binaryen_c = translate_c.addModule("binaryen-c");
+    binaryen_c.linkLibrary(lib_binaryen);
+
+    b.addNamedLazyPath("binaryen-c.h", binaryen_dep.path("src"));
+
     b.installArtifact(lib_binaryen);
 
     buildTools(b, target, optimize, strip, binaryen_dep, lib_binaryen);
